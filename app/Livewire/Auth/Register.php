@@ -5,7 +5,6 @@ namespace App\Livewire\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\ViewErrorBag;
 use Livewire\Component;
 
 class Register extends Component
@@ -51,9 +50,7 @@ class Register extends Component
     public function render()
     {
         /** @var \Illuminate\View\View $view */
-        $view = view('livewire.auth.register')->with([
-            'errors' => session('errors') ?? new ViewErrorBag,
-        ]);
+        $view = view('livewire.auth.register');
 
         return $view->extends('layouts.guest');
     }

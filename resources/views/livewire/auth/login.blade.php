@@ -1,3 +1,5 @@
+@php $errors = $errors ?? new \Illuminate\Support\ViewErrorBag; @endphp
+
 <div class="ke-auth-page">
 
     <a href="{{ route('home') }}" class="ke-brand mb-4 d-inline-block">KEGNE ENERGY</a>
@@ -7,6 +9,10 @@
         <p class="subtitle">Sign in to your KEGNE ENERGY account</p>
 
         <form wire:submit.prevent="login" novalidate>
+
+            @if ($errors->has('auth'))
+                <div class="alert alert-danger">{{ $errors->first('auth') }}</div>
+            @endif
 
             {{-- Email --}}
             <div class="mb-3">
@@ -30,11 +36,14 @@
                 <input
                     id="login-pass"
                     type="password"
-                    class="form-control"
+                    class="form-control @error('password') is-invalid @enderror"
                     wire:model.lazy="password"
                     placeholder="Your password"
                     autocomplete="current-password"
                 >
+                @error('password')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
 
             {{-- Remember me --}}

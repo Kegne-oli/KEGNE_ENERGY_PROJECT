@@ -1,3 +1,5 @@
+@php $errors = $errors ?? new \Illuminate\Support\ViewErrorBag; @endphp
+
 <div class="ke-auth-page">
 
     <a href="{{ route('home') }}" class="ke-brand mb-4 d-inline-block">KEGNE ENERGY</a>
@@ -7,6 +9,10 @@
         <p class="subtitle">Start managing your solar energy today</p>
 
         <form wire:submit.prevent="register" novalidate>
+
+            @if ($errors->has('auth'))
+                <div class="alert alert-danger">{{ $errors->first('auth') }}</div>
+            @endif
 
             {{-- Name --}}
             <div class="mb-3">

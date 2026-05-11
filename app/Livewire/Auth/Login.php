@@ -3,7 +3,6 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\ViewErrorBag;
 use Livewire\Component;
 
 class Login extends Component
@@ -31,7 +30,7 @@ class Login extends Component
             ['email' => $this->email, 'password' => $this->password],
             $this->remember
         )) {
-            $this->addError('email', 'These credentials do not match our records.');
+            $this->addError('auth', 'These credentials do not match our records.');
             return;
         }
 
@@ -47,9 +46,7 @@ class Login extends Component
     public function render()
     {
         /** @var \Illuminate\View\View $view */
-        $view = view('livewire.auth.login')->with([
-            'errors' => session('errors') ?? new ViewErrorBag,
-        ]);
+        $view = view('livewire.auth.login');
 
         return $view->extends('layouts.guest');
     }
