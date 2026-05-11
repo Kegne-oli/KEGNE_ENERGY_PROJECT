@@ -1,0 +1,528 @@
+/* =========================================
+   KEGNE ENERGY — Custom CSS
+   Bootstrap 5 + Brand Design System
+   ========================================= */
+
+/* ── CSS Variables (Brand Colors) ───────── */
+:root {
+    --ke-primary:            #00254d;
+    --ke-primary-container:  #0d3b6e;
+    --ke-on-primary:         #ffffff;
+    --ke-on-primary-cont:    #82a6e0;
+    --ke-secondary:          #006497;
+    --ke-on-secondary:       #ffffff;
+    --ke-surface:            #f8f9ff;
+    --ke-surface-cont:       #e6eeff;
+    --ke-surface-cont-high:  #dee9fc;
+    --ke-surface-cont-low:   #eff4ff;
+    --ke-on-surface:         #121c2a;
+    --ke-on-surface-var:     #43474f;
+    --ke-outline:            #737780;
+    --ke-outline-var:        #c3c6d1;
+    --ke-tertiary-fixed:     #ffddb4;
+    --ke-tertiary-fixed-dim: #ffb955;
+    --ke-on-tertiary-fixed:  #291800;
+    --ke-tertiary-container: #533400;
+    --ke-error:              #ba1a1a;
+    --ke-error-container:    #ffdad6;
+    --ke-on-error-cont:      #93000a;
+    --ke-secondary-cont:     #58b8ff;
+    --ke-on-secondary-cont:  #00476e;
+}
+
+/* ── Global ──────────────────────────────── */
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--ke-surface);
+    color: var(--ke-on-surface);
+    min-height: 100dvh;
+}
+
+h1, h2, h3, h4,
+.ke-brand,
+.ke-heading {
+    font-family: 'Manrope', sans-serif;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+/* ── Navbar ──────────────────────────────── */
+.ke-navbar {
+    background-color: rgba(248, 249, 255, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(195, 198, 209, 0.35);
+    height: 72px;
+}
+.ke-navbar .navbar-nav .nav-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ke-on-surface-var);
+    transition: color 0.2s ease;
+    padding: 0.4rem 0.75rem;
+}
+.ke-navbar .navbar-nav .nav-link:hover {
+    color: var(--ke-primary);
+}
+.ke-brand {
+    font-family: 'Manrope', sans-serif !important;
+    font-size: 1.55rem !important;
+    font-weight: 800 !important;
+    color: var(--ke-primary) !important;
+    letter-spacing: -0.02em;
+    text-decoration: none !important;
+}
+
+/* ── Buttons ─────────────────────────────── */
+.ke-btn-primary {
+    background-color: var(--ke-primary) !important;
+    color: var(--ke-on-primary) !important;
+    border: none !important;
+    padding: 0.55rem 1.5rem;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+.ke-btn-primary:hover  { opacity: 0.88; color: #fff !important; }
+.ke-btn-primary:active { transform: scale(0.95); }
+
+.ke-btn-outline {
+    background: transparent !important;
+    color: var(--ke-primary) !important;
+    border: 1.5px solid var(--ke-primary) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.ke-btn-outline:hover { background-color: var(--ke-surface-cont-high) !important; }
+
+.ke-btn-gold {
+    background-color: var(--ke-tertiary-fixed-dim) !important;
+    color: var(--ke-on-tertiary-fixed) !important;
+    border: none !important;
+    padding: 0.7rem 2rem;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: filter 0.2s ease;
+}
+.ke-btn-gold:hover { filter: brightness(1.08); }
+
+.ke-btn-ghost {
+    background: transparent !important;
+    border: 1.5px solid rgba(255,255,255,0.55) !important;
+    color: #ffffff !important;
+    padding: 0.7rem 2rem;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+.ke-btn-ghost:hover { background: rgba(255,255,255,0.1) !important; }
+
+/* ── Hero ────────────────────────────────── */
+.ke-hero {
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+}
+.ke-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 14px;
+    background-color: var(--ke-tertiary-fixed);
+    color: var(--ke-on-tertiary-fixed);
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 1.1rem;
+}
+.ke-badge-admin {
+    background-color: var(--ke-primary);
+    color: var(--ke-on-primary);
+}
+.ke-badge-user {
+    background-color: var(--ke-secondary);
+    color: var(--ke-on-secondary);
+}
+.ke-hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    color: var(--ke-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 560px;
+    margin-bottom: 1.2rem;
+}
+.ke-hero .lead {
+    color: var(--ke-on-surface-var);
+    font-size: 1.1rem;
+    line-height: 1.65;
+    max-width: 490px;
+    margin-bottom: 1.8rem;
+}
+.ke-dashboard-img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 28px 60px rgba(0,0,0,0.15);
+    border: 1px solid var(--ke-outline-var);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+}
+
+/* ── Stats Bar ───────────────────────────── */
+.ke-stats-bar {
+    background-color: var(--ke-primary);
+    padding: 2.8rem 0;
+    border-top:    1px solid rgba(115,119,128,0.2);
+    border-bottom: 1px solid rgba(115,119,128,0.2);
+}
+.ke-stats-bar .stat-number {
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+}
+.ke-stats-bar .stat-number.gold {
+    color: var(--ke-tertiary-fixed-dim);
+}
+.ke-stats-bar .stat-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ke-on-primary-cont);
+}
+
+/* ── Features Section ────────────────────── */
+.ke-features {
+    background-color: var(--ke-surface-cont-low);
+    padding: 5rem 0;
+}
+.ke-features .section-title {
+    font-size: clamp(1.6rem, 3vw, 2rem);
+    font-weight: 700;
+    color: var(--ke-primary);
+    margin-bottom: 0.75rem;
+}
+.ke-features .section-sub {
+    font-size: 16px;
+    color: var(--ke-on-surface-var);
+    max-width: 620px;
+    margin: 0 auto;
+}
+.ke-feature-card {
+    background: #ffffff;
+    border: 1px solid var(--ke-outline-var);
+    border-radius: 12px;
+    padding: 1.5rem;
+    height: 100%;
+    transition: box-shadow 0.25s ease;
+}
+.ke-feature-card:hover {
+    box-shadow: 0 6px 24px rgba(0,37,77,0.1);
+}
+.ke-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 1rem;
+    flex-shrink: 0;
+}
+.feature-icon-0 { background-color: #0d3b6e; color: #82a6e0; }
+.feature-icon-1 { background-color: #58b8ff; color: #00476e; }
+.feature-icon-2 { background-color: #ffddb4; color: #633f00; }
+.feature-icon-3 { background-color: #00254d; color: #ffffff; }
+.feature-icon-4 { background-color: #dee9fc; color: #00254d; }
+.feature-icon-5 { background-color: #ffdad6; color: #93000a; }
+.feature-icon-6 { background-color: #006497; color: #ffffff; }
+.feature-icon-7 { background-color: #533400; color: #ffddb4; }
+.ke-feature-card h5 {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ke-primary);
+    margin-bottom: 0.5rem;
+}
+.ke-feature-card p {
+    font-size: 14px;
+    color: var(--ke-on-surface-var);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ── CTA Section ─────────────────────────── */
+.ke-cta-section { padding: 5rem 0; }
+.ke-cta-wrap {
+    background-color: var(--ke-primary-container);
+    border-radius: 16px;
+    padding: 4.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+.ke-cta-wrap .cta-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+}
+.ke-cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
+}
+.ke-cta-wrap h2 {
+    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+.ke-cta-wrap p {
+    font-size: 1.05rem;
+    color: var(--ke-on-primary-cont);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+}
+
+/* ── Footer ──────────────────────────────── */
+.ke-footer {
+    background-color: #ffffff;
+    border-top: 1px solid var(--ke-outline-var);
+    padding: 2.2rem 0;
+}
+.ke-footer .brand-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ke-primary);
+}
+.ke-footer .copy {
+    font-size: 12px;
+    color: var(--ke-outline);
+    margin: 0;
+}
+.ke-footer a {
+    font-size: 12px;
+    color: var(--ke-outline);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.ke-footer a:hover {
+    color: var(--ke-primary);
+    text-decoration: underline;
+}
+.ke-social-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--ke-surface-cont);
+    color: var(--ke-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+.ke-social-btn:hover {
+    background-color: var(--ke-primary);
+    color: #ffffff;
+}
+
+/* ── Auth Pages ──────────────────────────── */
+.ke-auth-page {
+    min-height: 100dvh;
+    background-color: var(--ke-surface-cont-low);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 1rem;
+}
+.ke-auth-card {
+    background: #ffffff;
+    border: 1px solid var(--ke-outline-var);
+    border-radius: 16px;
+    padding: 2.5rem 2.2rem;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 8px 32px rgba(0,37,77,0.08);
+}
+.ke-auth-card h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--ke-primary);
+    margin-bottom: 0.3rem;
+}
+.ke-auth-card .subtitle {
+    font-size: 14px;
+    color: var(--ke-on-surface-var);
+    margin-bottom: 1.8rem;
+}
+.ke-auth-card .form-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ke-on-surface);
+    margin-bottom: 5px;
+}
+.ke-auth-card .form-control {
+    border: 1.5px solid var(--ke-outline-var);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+    background-color: var(--ke-surface);
+    color: var(--ke-on-surface);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ke-auth-card .form-control:focus {
+    border-color: var(--ke-primary);
+    box-shadow: 0 0 0 3px rgba(0, 37, 77, 0.12);
+    background-color: #fff;
+    outline: none;
+}
+.ke-auth-card .form-check-input:checked {
+    background-color: var(--ke-primary);
+    border-color: var(--ke-primary);
+}
+.ke-auth-link {
+    color: var(--ke-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+.ke-auth-link:hover {
+    text-decoration: underline;
+    color: var(--ke-primary);
+}
+
+/* ── App Dashboard ───────────────────────── */
+.ke-app-main {
+    padding-top: 5.5rem;
+    padding-bottom: 3rem;
+}
+.ke-page-header {
+    margin-bottom: 2rem;
+}
+.ke-page-header h1 {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--ke-primary);
+    margin-bottom: 0.3rem;
+}
+.ke-page-header p {
+    font-size: 14px;
+    color: var(--ke-on-surface-var);
+    margin: 0;
+}
+.ke-dash-card {
+    background: #ffffff;
+    border: 1px solid var(--ke-outline-var);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,37,77,0.05);
+    height: 100%;
+}
+.ke-dash-card .icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+.ke-dash-card h6 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ke-on-surface-var);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.ke-dash-card h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--ke-primary);
+    margin: 0;
+}
+.ke-dash-card .card-title-sm {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ke-primary);
+    margin-bottom: 0.4rem;
+}
+.ke-dash-card .card-body-text {
+    font-size: 14px;
+    color: var(--ke-on-surface-var);
+    margin: 0;
+}
+
+/* ── Admin Navbar Active ─────────────────── */
+.ke-app-navbar .nav-link.active {
+    color: var(--ke-primary) !important;
+    font-weight: 600;
+}
+
+/* ── Table Styles ────────────────────────── */
+.ke-table thead th {
+    background-color: var(--ke-surface-cont-low);
+    color: var(--ke-on-surface-var);
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--ke-outline-var);
+    padding: 0.75rem 1rem;
+}
+.ke-table tbody td {
+    font-size: 14px;
+    padding: 0.7rem 1rem;
+    vertical-align: middle;
+    color: var(--ke-on-surface);
+    border-bottom: 1px solid rgba(195,198,209,0.4);
+}
+.ke-table tbody tr:hover {
+    background-color: var(--ke-surface-cont-low);
+}
+
+/* ── Alert overrides ─────────────────────── */
+.alert {
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+/* ── Pagination ──────────────────────────── */
+.pagination .page-link {
+    color: var(--ke-primary);
+    border-color: var(--ke-outline-var);
+    font-size: 14px;
+}
+.pagination .page-item.active .page-link {
+    background-color: var(--ke-primary);
+    border-color: var(--ke-primary);
+    color: #fff;
+}
