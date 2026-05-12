@@ -96,8 +96,8 @@
                 @foreach($bars as $b)
                 <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;justify-content:flex-end;height:130px">
                     <div style="display:flex;gap:3px;align-items:flex-end;height:100%">
-                        <div class="ke-bar" style="height:{{ $b['s'] }}%;background:var(--ke-tertiary-fixed-dim);opacity:0.85"></div>
-                        <div class="ke-bar" style="height:{{ $b['u'] }}%;background:var(--ke-primary-container)"></div>
+                        <div class="ke-bar" style="--h: {{ $b['s'] }}%; height: var(--h); background: var(--ke-tertiary-fixed-dim); opacity: 0.85"></div>
+                        <div class="ke-bar" style="--h: {{ $b['u'] }}%; height: var(--h); background: var(--ke-primary-container)"></div>
                     </div>
                 </div>
                 @endforeach
@@ -121,11 +121,23 @@
                 ['day'=>'FRI','val'=>48.3,'max'=>60],
             ];
             @endphp
+            @php
+            $days = [
+                ['day'=>'MON','val'=>42.2,'max'=>60],
+                ['day'=>'TUE','val'=>38.5,'max'=>60],
+                ['day'=>'WED','val'=>51.8,'max'=>60],
+                ['day'=>'THU','val'=>29.1,'max'=>60],
+                ['day'=>'FRI','val'=>48.3,'max'=>60],
+            ];
+            @endphp
             @foreach($days as $d)
+            @php
+                $w = ($d['val'] / $d['max']) * 100;
+            @endphp
             <div class="d-flex align-items-center gap-2 mb-2">
                 <span style="font-size:12px;font-weight:600;color:var(--ke-on-surface-var);width:30px">{{ $d['day'] }}</span>
                 <div class="ke-progress flex-grow-1">
-                    <div class="ke-progress-bar gold" style="width:{{ ($d['val']/$d['max'])*100 }}%"></div>
+                    <div class="ke-progress-bar gold" style="--w: {{ $w }}%; width: var(--w)"></div>
                 </div>
                 <span style="font-size:12px;font-weight:600;color:var(--ke-primary);width:32px;text-align:right">{{ $d['val'] }}</span>
             </div>

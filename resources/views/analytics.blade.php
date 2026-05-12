@@ -91,8 +91,8 @@
         @foreach($years as $i => $yr)
         <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;justify-content:flex-end">
             <div style="display:flex;gap:3px;align-items:flex-end;height:110px">
-                <div class="ke-bar" style="height:{{ $degActual[$i] }}%;background:var(--ke-primary)"></div>
-                <div class="ke-bar" style="height:{{ $degProjected[$i] }}%;background:var(--ke-outline-var)"></div>
+                <div class="ke-bar" style="--h: {{ $degActual[$i] }}%; height: var(--h); background: var(--ke-primary)"></div>
+                <div class="ke-bar" style="--h: {{ $degProjected[$i] }}%; height: var(--h); background: var(--ke-outline-var)"></div>
             </div>
         </div>
         @endforeach

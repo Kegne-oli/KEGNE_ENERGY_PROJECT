@@ -75,8 +75,8 @@
         @foreach($months as $i => $m)
         <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;justify-content:flex-end">
             <div style="display:flex;gap:3px;align-items:flex-end;height:120px">
-                <div class="ke-bar" style="height:{{ $solar[$i] }}%;background:var(--ke-primary)"></div>
-                <div class="ke-bar" style="height:{{ $grid[$i] }}%;background:var(--ke-outline-var)"></div>
+                <div class="ke-bar" style="--h: {{ $solar[$i] }}%; height: var(--h); background: var(--ke-primary)"></div>
+                <div class="ke-bar" style="--h: {{ $grid[$i] }}%; height: var(--h); background: var(--ke-outline-var)"></div>
             </div>
         </div>
         @endforeach

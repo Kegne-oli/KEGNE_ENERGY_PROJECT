@@ -98,9 +98,10 @@ $alerts = [
 <div class="row g-3 mb-4">
     <div class="col-lg-8">
         @foreach($alerts as $alert)
+        @foreach($alerts as $alert)
         <div class="ke-alert-item {{ $alert['type'] }} mb-3">
-            <div class="alert-icon" style="background:{{ $alert['iconBg'] }}">
-                <span class="material-symbols-outlined" style="color:{{ $alert['iconColor'] }};font-size:20px">{{ $alert['icon'] }}</span>
+            <div class="alert-icon" style="--bg: {{ $alert['iconBg'] }}; background: var(--bg)">
+                <span class="material-symbols-outlined" style="--ic: {{ $alert['iconColor'] }}; color: var(--ic); font-size: 20px">{{ $alert['icon'] }}</span>
             </div>
             <div style="flex:1;min-width:0">
                 <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
@@ -139,7 +140,8 @@ $alerts = [
                 $density = [20,35,25,80,30,45,20,35,55,25,40,70];
                 @endphp
                 @foreach($density as $i => $h)
-                <div class="ke-bar" style="height:{{ $h }}%;background:{{ $i === 3 ? '#dc2626' : 'var(--ke-outline-var)' }};max-width:20px;flex:1"></div>
+                @php $bg = $i === 3 ? '#dc2626' : 'var(--ke-outline-var)'; @endphp
+                <div class="ke-bar" style="--h: {{ $h }}%; --bg: {{ $bg }}; height: var(--h); background: var(--bg); max-width: 20px; flex: 1"></div>
                 @endforeach
             </div>
             <p style="font-size:12px;color:var(--ke-on-surface-var);margin-top:0.5rem;margin-bottom:0">

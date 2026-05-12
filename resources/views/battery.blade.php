@@ -102,7 +102,8 @@
                         $temps = [60,45,55,70,50,65,80,55,60,75,50,45];
                         @endphp
                         @foreach($temps as $i => $t)
-                        <div style="flex:1;height:{{ $t }}%;border-radius:3px;background:{{ $i >= 8 ? 'var(--ke-tertiary-fixed-dim)' : 'var(--ke-surface-cont)' }};align-self:flex-end"></div>
+                        @php $bg = $i >= 8 ? 'var(--ke-tertiary-fixed-dim)' : 'var(--ke-surface-cont)'; @endphp
+                        <div style="--h: {{ $t }}%; --bg: {{ $bg }}; flex: 1; height: var(--h); border-radius: 3px; background: var(--bg); align-self: flex-end"></div>
                         @endforeach
                     </div>
                 </div>
@@ -133,8 +134,8 @@
         @endphp
         @foreach($charge as $i => $c)
         <div style="display:flex;gap:2px;align-items:flex-end;height:130px;flex:1">
-            <div class="ke-bar" style="height:{{ $c }}%;background:var(--ke-tertiary-fixed-dim);opacity:0.9"></div>
-            <div class="ke-bar" style="height:{{ $discharge[$i] }}%;background:var(--ke-primary-container)"></div>
+            <div class="ke-bar" style="--h: {{ $c }}%; height: var(--h); background: var(--ke-tertiary-fixed-dim); opacity: 0.9"></div>
+            <div class="ke-bar" style="--h: {{ $discharge[$i] }}%; height: var(--h); background: var(--ke-primary-container)"></div>
         </div>
         @endforeach
     </div>
@@ -179,10 +180,9 @@
     @endphp
     @foreach($modes as $mode)
     <div class="col-md-4">
-        <div class="ke-section-card d-flex align-items-center gap-3"
-             style="{{ $mode['active'] ? 'border-color:var(--ke-secondary);border-width:2px' : '' }}">
-            <div style="width:44px;height:44px;border-radius:12px;background:{{ $mode['iconBg'] }};display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                <span class="material-symbols-outlined" style="color:{{ $mode['iconColor'] }}">{{ $mode['icon'] }}</span>
+        <div class="ke-section-card d-flex align-items-center gap-3" @if($mode['active']) style="border-color: var(--ke-secondary); border-width: 2px" @endif>
+            <div style="--bg: {{ $mode['iconBg'] }}; --ic: {{ $mode['iconColor'] }}; width: 44px; height: 44px; border-radius: 12px; background: var(--bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0">
+                <span class="material-symbols-outlined" style="color: var(--ic)">{{ $mode['icon'] }}</span>
             </div>
             <div style="flex:1">
                 <div style="font-size:14px;font-weight:600;color:var(--ke-on-surface)">{{ $mode['title'] }}</div>

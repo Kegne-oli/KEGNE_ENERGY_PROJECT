@@ -38,9 +38,9 @@
         @foreach($cBars as $i => $v)
         <div style="display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;justify-content:flex-end;height:130px">
             <div style="display:flex;gap:2px;align-items:flex-end;height:100%">
-                <div class="ke-bar" style="height:{{ $v }}%;background:var(--ke-primary-container)"></div>
-                <div class="ke-bar" style="height:{{ $cBars2[$i] }}%;background:var(--ke-secondary)"></div>
-                <div class="ke-bar" style="height:{{ $cBars3[$i] }}%;background:var(--ke-tertiary-fixed-dim)"></div>
+                <div class="ke-bar" style="--h: {{ $v }}%; height: var(--h); background: var(--ke-primary-container)"></div>
+                <div class="ke-bar" style="--h: {{ $cBars2[$i] }}%; height: var(--h); background: var(--ke-secondary)"></div>
+                <div class="ke-bar" style="--h: {{ $cBars3[$i] }}%; height: var(--h); background: var(--ke-tertiary-fixed-dim)"></div>
             </div>
         </div>
         @endforeach
@@ -172,7 +172,7 @@
     @foreach($reports as $r)
     <div class="d-flex align-items-center gap-3 py-2" style="border-bottom:1px solid rgba(195,198,209,0.35)">
         <div style="width:36px;height:36px;border-radius:10px;background:var(--ke-surface-cont);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span class="material-symbols-outlined" style="font-size:18px;color:{{ $r['color'] }}">{{ $r['icon'] }}</span>
+            <span class="material-symbols-outlined" style="--ic: {{ $r['color'] }}; font-size:18px; color: var(--ic)">{{ $r['icon'] }}</span>
         </div>
         <div style="flex:1">
             <div style="font-size:14px;font-weight:600;color:var(--ke-on-surface)">{{ $r['title'] }}</div>

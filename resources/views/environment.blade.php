@@ -101,7 +101,7 @@
             <div class="d-flex align-items-center gap-2 mb-2">
                 <span style="font-size:12px;font-weight:600;color:var(--ke-on-surface-var);width:42px">{{ $e['label'] }}</span>
                 <div class="ke-progress flex-grow-1">
-                    <div class="ke-progress-bar" style="width:{{ $e['val'] }}%;background:{{ $e['color'] }}"></div>
+                    <div class="ke-progress-bar" style="--w: {{ $e['val'] }}%; --bg: {{ $e['color'] }}; width: var(--w); background: var(--bg)"></div>
                 </div>
             </div>
             @endforeach
@@ -126,7 +126,7 @@
     @foreach($extras as $ex)
     <div class="d-flex align-items-center gap-3 py-2" style="border-bottom:1px solid rgba(195,198,209,0.35)">
         <div style="width:42px;height:42px;border-radius:12px;background:var(--ke-surface-cont-low);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <span class="material-symbols-outlined" style="font-size:20px;color:{{ $ex['iconColor'] }}">{{ $ex['icon'] }}</span>
+            <span class="material-symbols-outlined" style="--ic: {{ $ex['iconColor'] }}; font-size: 20px; color: var(--ic)">{{ $ex['icon'] }}</span>
         </div>
         <div style="flex:1">
             <div style="font-size:12px;color:var(--ke-on-surface-var)">{{ $ex['label'] }}</div>

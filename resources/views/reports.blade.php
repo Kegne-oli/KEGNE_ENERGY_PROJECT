@@ -76,10 +76,10 @@
                 @foreach($sections as $s)
                 <div class="d-flex align-items-center gap-2 py-2"
                      style="border-bottom:1px solid rgba(195,198,209,0.3);cursor:pointer">
-                    <span class="material-symbols-outlined" style="font-size:18px;color:{{ $s['active'] ? 'var(--ke-primary)' : 'var(--ke-outline)' }}">
+                    <span class="material-symbols-outlined" style="--ic: {{ $s['active'] ? 'var(--ke-primary)' : 'var(--ke-outline)' }}; font-size: 18px; color: var(--ic)">
                         {{ $s['icon'] }}
                     </span>
-                    <span style="font-size:13px;font-weight:{{ $s['active'] ? '600' : '400' }};color:{{ $s['active'] ? 'var(--ke-on-surface)' : 'var(--ke-on-surface-var)' }};flex:1">
+                    <span style="--fw: {{ $s['active'] ? '600' : '400' }}; --col: {{ $s['active'] ? 'var(--ke-on-surface)' : 'var(--ke-on-surface-var)' }}; font-size: 13px; font-weight: var(--fw); color: var(--col); flex: 1">
                         {{ $s['label'] }}
                     </span>
                     @if($s['active'])
@@ -155,7 +155,7 @@
                 <div class="ke-chart-placeholder" style="height:70px;padding:0.5rem 0.5rem 0">
                     @php $previewBars = [40,55,70,85,75,60,80,90,70,55,65,75]; @endphp
                     @foreach($previewBars as $h)
-                    <div class="ke-bar" style="height:{{ $h }}%;background:var(--ke-primary);opacity:0.7;flex:1"></div>
+                    <div class="ke-bar" style="--h: {{ $h }}%; height: var(--h); background: var(--ke-primary); opacity: 0.7; flex: 1"></div>
                     @endforeach
                 </div>
 

@@ -35,7 +35,7 @@
                 <div class="col-6">
                     <div style="background:var(--ke-surface-cont-low);border-radius:10px;padding:0.75rem">
                         <div style="font-size:11px;color:var(--ke-on-surface-var);margin-bottom:3px">{{ $c['label'] }}</div>
-                        <div style="font-family:'Manrope',sans-serif;font-size:1.3rem;font-weight:700;color:{{ $c['color'] }}">
+                        <div style="--col: {{ $c['color'] }}; font-family:'Manrope',sans-serif;font-size:1.3rem;font-weight:700;color: var(--col)">
                             {{ $c['value'] }} <span style="font-size:0.8rem;font-weight:500;color:var(--ke-on-surface-var)">{{ $c['unit'] }}</span>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
         $wBars = [40, 70, 90, 80, 55, 85, 95, 60, 75, 88, 50, 65];
         @endphp
         @foreach($wBars as $h)
-        <div class="ke-bar" style="height:{{ $h }}%;background:var(--ke-tertiary-fixed-dim);opacity:0.8;flex:1;max-width:32px"></div>
+        <div class="ke-bar" style="--h: {{ $h }}%; height: var(--h); background: var(--ke-tertiary-fixed-dim); opacity: 0.8; flex: 1; max-width: 32px"></div>
         @endforeach
     </div>
     <div class="d-flex justify-content-between mt-2" style="font-size:11px;color:var(--ke-outline)">
@@ -117,13 +117,15 @@
     ];
     @endphp
     @foreach($forecast as $f)
+    @foreach($forecast as $f)
     <div class="ke-info-row">
         <div class="d-flex align-items-center gap-3">
             <span style="font-size:13px;font-weight:600;color:var(--ke-on-surface-var);min-width:90px">{{ $f['day'] }}</span>
-            <span class="material-symbols-outlined" style="color:{{ $f['iconColor'] }};font-size:22px">{{ $f['icon'] }}</span>
+            <span class="material-symbols-outlined" style="--ic: {{ $f['iconColor'] }}; color: var(--ic); font-size: 22px">{{ $f['icon'] }}</span>
         </div>
         <span class="ke-pill {{ $f['labelCss'] }}" style="font-size:11px">{{ $f['label'] }}</span>
     </div>
+    @endforeach
     @endforeach
 </div>
 
