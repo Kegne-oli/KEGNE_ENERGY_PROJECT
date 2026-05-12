@@ -12,73 +12,132 @@
 
     @livewireStyles
 </head>
-<body>
+<body class="ke-app-body">
 
-    {{-- App Navbar --}}
-    <nav class="navbar navbar-expand-md ke-navbar ke-app-navbar fixed-top shadow-sm">
-        <div class="container-xl">
-            <a class="navbar-brand ke-brand" href="{{ route('home') }}">KEGNE ENERGY</a>
+<div class="ke-layout">
 
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#appNav"
-                    aria-controls="appNav" aria-expanded="false">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    {{-- ══ SIDEBAR ══════════════════════════════════════════ --}}
+    <aside class="ke-sidebar" id="keSidebar">
+        <div class="ke-sidebar-brand">
+            <a href="{{ route('home') }}" class="text-decoration-none">
+                <span class="ke-sidebar-logo">KEGNE<br>ENERGY</span>
+            </a>
+        </div>
 
-            <div class="collapse navbar-collapse" id="appNav">
-                <ul class="navbar-nav ms-auto align-items-center gap-2">
+        <nav class="ke-sidebar-nav">
+            @php
+            $navItems = [
+                ['route' => 'dashboard',            'icon' => 'dashboard',          'label' => 'Dashboard'],
+                ['route' => 'energy-monitoring',    'icon' => 'bolt',               'label' => 'Energy Monitoring'],
+                ['route' => 'consumption',          'icon' => 'electric_meter',     'label' => 'Consumption'],
+                ['route' => 'savings',              'icon' => 'savings',            'label' => 'Savings'],
+                ['route' => 'analytics',            'icon' => 'analytics',          'label' => 'Analytics'],
+                ['route' => 'alerts',               'icon' => 'notifications',      'label' => 'Alerts'],
+                ['route' => 'maintenance',          'icon' => 'build',              'label' => 'Maintenance'],
+                ['route' => 'weather',              'icon' => 'cloud',              'label' => 'Weather'],
+                ['route' => 'environment',          'icon' => 'eco',                'label' => 'Environment'],
+                ['route' => 'battery',              'icon' => 'battery_charging_full','label' => 'Battery'],
+                ['route' => 'reports',              'icon' => 'description',        'label' => 'Reports'],
+                ['route' => 'settings',             'icon' => 'settings',           'label' => 'Settings'],
+            ];
+            @endphp
 
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}"
-                           href="{{ route('dashboard') }}">
-                            <span class="material-symbols-outlined" style="font-size:17px">dashboard</span>
-                            Dashboard
-                        </a>
-                    </li>
+            @foreach($navItems as $item)
+            <a href="{{ route($item['route']) }}"
+               class="ke-nav-link {{ request()->routeIs($item['route']) ? 'active' : '' }}">
+                <span class="material-symbols-outlined">{{ $item['icon'] }}</span>
+                <span class="ke-nav-label">{{ $item['label'] }}</span>
+            </a>
+            @endforeach
 
-                    @if(Auth::user()->isAdmin())
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}"
-                           href="{{ route('admin.dashboard') }}">
-                            <span class="material-symbols-outlined" style="font-size:17px">admin_panel_settings</span>
-                            Admin Panel
-                        </a>
-                    </li>
-                    @endif
+            @if(Auth::user()->isAdmin())
+            <div class="ke-nav-divider"></div>
+            <a href="{{ route('admin.dashboard') }}"
+               class="ke-nav-link {{ request()->routeIs('admin.*') ? 'active' : '' }}">
+                <span class="material-symbols-outlined">admin_panel_settings</span>
+                <span class="ke-nav-label">Admin Panel</span>
+            </a>
+            @endif
+        </nav>
 
-                    <li class="nav-item">
-                        <span class="nav-link text-muted" style="font-size:13px">
-                            <span class="material-symbols-outlined" style="font-size:16px">person</span>
-                            {{ Auth::user()->name }}
-                            <span class="badge ms-1 {{ Auth::user()->isAdmin() ? 'ke-badge-admin' : 'ke-badge-user' }}" style="font-size:11px">
-                                {{ Auth::user()->role }}
-                            </span>
-                        </span>
-                    </li>
-
-                    <li class="nav-item">
-                        <form method="POST" action="{{ route('logout') }}" class="m-0">
-                            @csrf
-                            <button type="submit" class="btn ke-btn-outline btn-sm">
-                                <span class="material-symbols-outlined" style="font-size:15px">logout</span>
-                                Logout
-                            </button>
-                        </form>
-                    </li>
-
-                </ul>
+        <div class="ke-sidebar-footer">
+            <div class="ke-sidebar-user">
+                <div class="ke-user-avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
+                <div class="ke-user-info">
+                    <div class="ke-user-name">{{ Auth::user()->name }}</div>
+                    <div class="ke-user-role">{{ ucfirst(Auth::user()->role) }}</div>
+                </div>
             </div>
+            <form method="POST" action="{{ route('logout') }}" class="mt-2">
+                @csrf
+                <button type="submit" class="ke-logout-btn">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span class="ke-nav-label">Logout</span>
+                </button>
+            </form>
         </div>
-    </nav>
+    </aside>
 
-    {{-- Page Content --}}
-    <main class="ke-app-main">
-        <div class="container-xl">
+    {{-- ══ MAIN AREA ════════════════════════════════════════ --}}
+    <div class="ke-main-wrap">
+
+        {{-- Top bar --}}
+        <header class="ke-topbar">
+            <div class="d-flex align-items-center gap-3">
+                <button class="ke-sidebar-toggle" id="sidebarToggle">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+                <div>
+                    <div class="ke-topbar-title">Resource Management</div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <div class="ke-topbar-user">
+                    <span class="ke-topbar-name">{{ Auth::user()->name }}</span>
+                    <div class="ke-topbar-avatar">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</div>
+                </div>
+            </div>
+        </header>
+
+        {{-- Page content --}}
+        <main class="ke-page-content">
             @yield('content')
-        </div>
-    </main>
+        </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    @livewireScripts
+        {{-- Footer --}}
+        <footer class="ke-app-footer">
+            <div class="text-center">
+                <div class="ke-brand" style="font-size:1rem;margin-bottom:4px">KEGNE ENERGY</div>
+                <p class="mb-1" style="font-size:12px;color:var(--ke-outline)">© 2024 KEGNE ENERGY. All rights reserved.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#" style="font-size:11px;color:var(--ke-outline)">Privacy Policy</a>
+                    <a href="#" style="font-size:11px;color:var(--ke-outline)">Terms of Service</a>
+                    <a href="#" style="font-size:11px;color:var(--ke-outline)">Contact Support</a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+{{-- Sidebar overlay for mobile --}}
+<div class="ke-sidebar-overlay" id="sidebarOverlay"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const toggle   = document.getElementById('sidebarToggle');
+    const sidebar  = document.getElementById('keSidebar');
+    const overlay  = document.getElementById('sidebarOverlay');
+
+    toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
+    });
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('show');
+    });
+</script>
+@livewireScripts
 </body>
 </html>
