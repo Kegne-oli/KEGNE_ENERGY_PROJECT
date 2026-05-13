@@ -38,6 +38,7 @@
                 ['route' => 'environment',          'icon' => 'eco',                'label' => 'Environment'],
                 ['route' => 'battery',              'icon' => 'battery_charging_full','label' => 'Battery'],
                 ['route' => 'reports',              'icon' => 'description',        'label' => 'Reports'],
+                ['route' => 'my-chats',             'icon' => 'chat',               'label' => 'My Chats'],
                 ['route' => 'settings',             'icon' => 'settings',           'label' => 'Settings'],
             ];
             @endphp
@@ -119,6 +120,9 @@
 
     </div>
 </div>
+
+{{-- Chat System --}}
+@livewire('chat.chat-icon')
 
 {{-- Sidebar overlay for mobile --}}
 <div class="ke-sidebar-overlay" id="sidebarOverlay"></div>

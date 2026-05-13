@@ -98,7 +98,6 @@ $alerts = [
 <div class="row g-3 mb-4">
     <div class="col-lg-8">
         @foreach($alerts as $alert)
-        @foreach($alerts as $alert)
         <div class="ke-alert-item {{ $alert['type'] }} mb-3">
             <div class="alert-icon" style="--bg: {{ $alert['iconBg'] }}; background: var(--bg)">
                 <span class="material-symbols-outlined" style="--ic: {{ $alert['iconColor'] }}; color: var(--ic); font-size: 20px">{{ $alert['icon'] }}</span>

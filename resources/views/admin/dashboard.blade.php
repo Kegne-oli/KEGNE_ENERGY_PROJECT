@@ -26,10 +26,10 @@
     <div class="col-sm-6 col-xl-3">
         <div class="ke-dash-card">
             <div class="icon-wrap" style="background:#ffddb4;color:#633f00">
-                <span class="material-symbols-outlined">monitoring</span>
+                <span class="material-symbols-outlined">chat</span>
             </div>
-            <h6>Active Systems</h6>
-            <h3>{{ $totalUsers }}</h3>
+            <h6>Support Chats</h6>
+            <h3><a href="{{ route('admin.chat-manager') }}" class="text-decoration-none" style="color: inherit;">Manage</a></h3>
         </div>
     </div>
     <div class="col-sm-6 col-xl-3">

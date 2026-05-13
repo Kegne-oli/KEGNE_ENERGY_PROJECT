@@ -16,6 +16,8 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\SettingsController;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
+use App\Livewire\Chat\ChatList;
+use App\Livewire\Admin\ChatManager;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,9 +52,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/battery',           [BatteryController::class,         'index'])->name('battery');
     Route::get('/reports',           [ReportsController::class,         'index'])->name('reports');
     Route::get('/settings',          [SettingsController::class,        'index'])->name('settings');
+
+    // Chat routes
+    Route::get('/my-chats', ChatList::class)->name('my-chats');
 });
 
 // ── Admin only ──────────────────────────────────
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::get('/chat-manager', ChatManager::class)->name('chat-manager');
 });
